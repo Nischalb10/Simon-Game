@@ -8,12 +8,24 @@ var highScore = localStorage.getItem('simonHighScoreHard') || 0;
 highScore = parseInt(highScore); // Convert from string to number
 $("#high-score").text("High Score: " + highScore);
 
-$(document).keydown(function(){
-    if(!started){
-        $("#level-title").text("Level " + level);
-        newSequence();
-        started = true;
-    }
+$(document).ready(function() {
+    // For desktop - keyboard press
+    $(document).keydown(function() {
+        if (!started) {
+            $("#level-title").text("Level " + level);
+            newSequence();
+            started = true;
+        }
+    });
+
+    // For mobile - touch anywhere on screen
+    $("#level-title").click(function() {
+        if (!started) {
+            $("#level-title").text("Level " + level);
+            newSequence();
+            started = true;
+        }
+    });
 });
 
 $(".btn").click(function(){

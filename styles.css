@@ -42,6 +42,12 @@ body {
   color: #FEF2BF;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   animation: glow 2s ease-in-out infinite alternate;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#level-title:active {
+  opacity: 0.8;
 }
 
 @keyframes glow {
@@ -52,6 +58,8 @@ body {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e60073;
   }
 }
+
+
 
 /* Level selection buttons styling */
 .easy, .medium, .hard {
