@@ -4,6 +4,9 @@ var userClickedPattern = [];
 var randomChosenColor,randomNumber;
 var started = false;
 var level =0;
+var highScore = localStorage.getItem('simonHighScoreEasy') || 0;
+highScore = parseInt(highScore); // Convert from string to number
+$("#high-score").text("High Score: " + highScore);
 
 $(document).keydown(function(){
     if(!started){
@@ -24,6 +27,11 @@ $(".btn").click(function(){
 function checkAnswer(currentLevel){
     if(gamePattern[currentLevel] === userClickedPattern[currentLevel]){
         if(userClickedPattern.length === gamePattern.length){
+            if (level > highScore) {
+                highScore = level;
+                localStorage.setItem('simonHighScoreEasy', highScore);
+                $("#high-score").text("High Score: " + highScore);
+            }
             setTimeout(function(){
                 newSequence();
             },1000);
@@ -32,7 +40,7 @@ function checkAnswer(currentLevel){
     else{
         playSound("wrong");
         $("body").addClass("game-over");
-        $("#level-title").text("Game over. Press any key to restart");
+        $("#level-title").text("Game over. Press any key to restart.");
         setTimeout(function(){
             $("body").removeClass("game-over");    
         },200);
@@ -44,7 +52,7 @@ function newSequence(){
     userClickedPattern = [];
     level++;
     $("#level-title").text("Level " + level);
-    randomNumber = Math.floor(Math.random() * 4);
+    randomNumber = Math.floor(Math.random() * buttonColors.length);
     randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
     $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);

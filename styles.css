@@ -1,53 +1,275 @@
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 body {
   text-align: center;
-  background-color: #011F3F;
+  background: linear-gradient(
+    -45deg, 
+    #1a2a6c,    /* deep blue */
+    #b21f1f,    /* red */
+    #fdbb2d,    /* yellow */
+    #45a049,    /* green */
+    #1e88e5     /* light blue */
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  height: 100vh;
+  margin: 0;
+  padding: 10px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* For better performance on mobile devices */
+@media (max-width: 768px) {
+  body {
+    animation: gradientBG 20s ease infinite; /* Slower animation for mobile */
+    background-size: 300% 300%; /* Smaller background size for mobile */
+  }
 }
 
 #level-title {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 3rem;
-  margin:  5%;
+  font-size: 2.5rem;
+  margin: 30px 0;
   color: #FEF2BF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.container {
-  display: block;
-  width: 50%;
-  margin: auto;
+@keyframes glow {
+  from {
+    text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 5px #e60073;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e60073;
+  }
+}
 
+/* Level selection buttons styling */
+.easy, .medium, .hard {
+  padding: 15px 30px;
+  margin: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.easy {
+  background: linear-gradient(145deg, #4CAF50, #45a049);
+}
+
+.medium {
+  background: linear-gradient(145deg, #2196F3, #1e88e5);
+}
+
+.hard {
+  background: linear-gradient(145deg, #f44336, #e53935);
+}
+
+.easy:hover, .medium:hover, .hard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* How to play section */
+h3 {
+  color: #FEF2BF;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#level-description {
+  font-size: 1rem;
+  color: #FEF2BF;
+  margin: 10px auto;
+  max-width: 800px;
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .btn {
-  margin: 25px;
-  display: inline-block;
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
+  margin: 15px;
+  height: 150px;
+  width: 150px;
+  border: 8px solid rgba(0, 0, 0, 0.8);
   border-radius: 20%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
 }
 
 .game-over {
-  background-color: red;
+  background-color: #ff0000;
   opacity: 0.8;
+  animation: shake 0.5s;
 }
 
-.red {
-  background-color: red;
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
 }
 
-.green {
-  background-color: green;
-}
-
-.blue {
-  background-color: blue;
-}
-
-.yellow {
-  background-color: yellow;
-}
+/* Enhanced button colors with gradients */
+.red { background: linear-gradient(145deg, #ff0000, #cc0000); }
+.green { background: linear-gradient(145deg, #00ff00, #00cc00); }
+.blue { background: linear-gradient(145deg, #0000ff, #0000cc); }
+.yellow { background: linear-gradient(145deg, #ffff00, #cccc00); }
+.orange { background: linear-gradient(145deg, #ffa500, #cc8400); }
+.purple { background: linear-gradient(145deg, #800080, #660066); }
+.pink { background: linear-gradient(145deg, #ffc0cb, #ffb6c1); }
+.brown { background: linear-gradient(145deg, #8b4513, #723a10); }
 
 .pressed {
-  box-shadow: 0 0 20px white;
-  background-color: grey;
+  box-shadow: 0 0 30px white;
+  background: grey;
+  transform: scale(0.95);
+}
+
+#scores {
+  color: #FEF2BF;
+  margin: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  display: inline-block;
+}
+
+#scores p {
+  font-size: 1.2rem;
+  margin: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.home-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #FEF2BF;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-btn i {
+  font-size: 24px;
+}
+
+.home-btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile optimization for home button */
+@media (max-width: 768px) {
+  .home-btn {
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+  }
+  
+  .home-btn i {
+      font-size: 20px;
+  }
+}
+
+/* Specific mobile optimizations */
+@media (max-width: 768px) {
+  
+  
+  /* For Easy Level (4 buttons) */
+  .container:has(.btn:nth-child(4)) .btn {
+    height: 100px;
+    width: 100px;
+  }
+  
+  /* For Medium Level (6 buttons) */
+  .container:has(.btn:nth-child(6)) .btn {
+    height: 90px;
+    width: 90px;
+  }
+  
+  /* For Hard Level (8 buttons) */
+  .container:has(.btn:nth-child(8)) .btn {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+/* For smaller mobile screens */
+@media (max-height: 600px) {
+  
+  
+  .btn {
+    height: 65px;
+    width: 65px;
+    border-width: 3px;
+  }
+  
+  #scores {
+    margin: 3px;
+    padding: 3px;
+  }
+  
+  #scores p {
+    font-size: 0.7rem;
+    margin: 3px;
+  }
+}
+
+/* For very small screens */
+@media (max-height: 480px) {
+  
+  .btn {
+    height: 55px;
+    width: 55px;
+    border-width: 3px;
+  }
 }
