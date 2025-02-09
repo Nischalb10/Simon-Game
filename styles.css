@@ -230,34 +230,62 @@ h3 {
 
 /* Specific mobile optimizations */
 @media (max-width: 768px) {
-  
+  #level-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+  #scores {
+    margin: 5px;
+    padding: 8px;
+  }
   
   /* For Easy Level (4 buttons) */
   .container:has(.btn:nth-child(4)) .btn {
-    height: 100px;
-    width: 100px;
+    height: 120px;  /* Increased */
+    width: 120px;   /* Increased */
+    margin: 8px;
   }
   
   /* For Medium Level (6 buttons) */
   .container:has(.btn:nth-child(6)) .btn {
-    height: 90px;
-    width: 90px;
+    height: 100px;  /* Increased */
+    width: 100px;   /* Increased */
+    margin: 6px;
   }
   
   /* For Hard Level (8 buttons) */
   .container:has(.btn:nth-child(8)) .btn {
-    height: 75px;
-    width: 75px;
+    height: 85px;   /* Increased */
+    width: 85px;    /* Increased */
+    margin: 5px;
+  }
+
+  .container {
+    gap: 10px;
+    margin: 5px auto;
+  }
+
+  .row {
+    gap: 10px;
+  }
+
+  .btn {
+    border-width: 4px;
+    transition: all 0.2s ease;
   }
 }
 
-/* For smaller mobile screens */
+/* Replace these smaller screen media queries */
 @media (max-height: 600px) {
-  
+  #level-title {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
   
   .btn {
-    height: 65px;
-    width: 65px;
+    min-height: 70px;  /* Changed to min-height */
+    min-width: 70px;   /* Changed to min-width */
     border-width: 3px;
   }
   
@@ -269,15 +297,5 @@ h3 {
   #scores p {
     font-size: 0.7rem;
     margin: 3px;
-  }
-}
-
-/* For very small screens */
-@media (max-height: 480px) {
-  
-  .btn {
-    height: 55px;
-    width: 55px;
-    border-width: 3px;
   }
 }
